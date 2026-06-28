@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Angel & Co Interiors</title>
+    <meta name="description" content="Request a quote for your luxury interior design project with Angel & Co.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="Photos/angel & co/logo-transparent.png" alt="Angel & Co Monogram" class="logo-a">
+            </a>
+            
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="quote.html" class="btn btn-primary nav-quote-btn">Get a Quote</a>
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header" style="background-image: url('Photos/angel & co/group1/153ecfab-4afb-4ad0-a2f9-e495f570ec51.jpeg');">
+        <div class="page-header-content reveal">
+            <h1>Get a <span class="accent-text">Quote</span></h1>
+            <p style="color: var(--color-ivory); font-size: 1.2rem;">Tell us about your project and let's bring your vision to life.</p>
+        </div>
+    </div>
+
+    <!-- Quote Form Section -->
+    <section>
+        <div class="container">
+            <div class="quote-form reveal">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Project <span class="accent-text">Details</span></h2>
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Project Address</label>
+                            <input type="text" id="address" placeholder="City, State, Zip">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="type">Project Type</label>
+                            <select id="type" name="project_type">
+                                <option value="">Select an option</option>
+                                <option value="full-home">Full Home Renovation</option>
+                                <option value="kitchen">Kitchen Remodel</option>
+                                <option value="bathroom">Bathroom Remodel</option>
+                                <option value="furnishing">Furnishing & Styling</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description">Project Description *</label>
+                            <textarea id="description" rows="5" required placeholder="Tell us about your goals, style preferences, and timeline..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="photos">Upload Photos (Optional)</label>
+                            <input type="file" id="photos" multiple accept="image/*" style="padding: 10px; border: 1px dashed var(--color-primary-navy); background: transparent;">
+                        </div>
+                        <div class="form-group full-width" style="text-align: center; margin-top: 1rem;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 300px;">Request Quote</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="index.html">
+                <img src="Photos/angel & co/logo-transparent.png" alt="Angel & Co Interiors Logo" class="footer-logo">
+            </a>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="quote.html">Get a Quote</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="footer-contact">
+                <p>(555) 123-4567 &nbsp;&nbsp;|&nbsp;&nbsp; hello@angelandco.com</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-houzz"></i></a>
+            </div>
+            
+            <p class="copyright">&copy; 2026 Angel & Co Interiors. Based in Miami, Florida. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
