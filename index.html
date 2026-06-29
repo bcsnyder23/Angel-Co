@@ -10,6 +10,45 @@
 </head>
 <body>
     
+    <!-- Password Protection Overlay -->
+    <div id="password-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-primary-navy); z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--color-ivory);">
+        <img src="Photos/angel & co/logo-transparent.png" alt="Angel & Co Monogram" style="height: 120px; margin-bottom: 2rem; mix-blend-mode: screen;">
+        <h2 style="color: var(--color-ivory); margin-bottom: 10px;">Private Access</h2>
+        <p style="margin-bottom: 2rem; color: rgba(248,246,242,0.8);">Please enter the password to view this portfolio.</p>
+        <div style="display: flex; gap: 10px; max-width: 400px; width: 100%; padding: 0 20px; box-sizing: border-box;">
+            <input type="password" id="site-password" placeholder="Enter password" style="flex: 1; padding: 15px 20px; font-family: var(--font-body); font-size: 1rem; border: 1px solid var(--color-champagne-gold); background: transparent; color: var(--color-ivory); outline: none; border-radius: 50px;">
+            <button onclick="checkPassword()" class="btn btn-primary" style="padding: 15px 30px; margin: 0;">Enter</button>
+        </div>
+        <p id="pwd-error" style="color: #ff6b6b; display: none; margin-top: 15px; font-family: var(--font-body);">Incorrect password. Please try again.</p>
+    </div>
+    <script>
+        if (sessionStorage.getItem('site_authenticated') !== 'true') {
+            document.body.style.overflow = 'hidden';
+        }
+
+        function checkPassword() {
+            const pwd = document.getElementById('site-password').value;
+            if (pwd === '123') {
+                document.getElementById('password-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                sessionStorage.setItem('site_authenticated', 'true');
+                window.dispatchEvent(new Event('scroll'));
+            } else {
+                document.getElementById('pwd-error').style.display = 'block';
+            }
+        }
+        
+        if (sessionStorage.getItem('site_authenticated') === 'true') {
+            document.getElementById('password-overlay').style.display = 'none';
+        }
+        
+        document.getElementById('site-password').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+
     <!-- Navigation -->
     <header id="header">
         <div class="nav-container">
@@ -182,16 +221,10 @@
             </div>
             
             <div class="footer-contact">
-                <p>(555) 123-4567 &nbsp;&nbsp;|&nbsp;&nbsp; hello@angelandco.com</p>
+                <p>(555) 123-4567 &nbsp;&nbsp;|&nbsp;&nbsp; josee@designbyangel.com</p>
             </div>
             
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
-                <a href="#"><i class="fab fa-houzz"></i></a>
-            </div>
-            
-            <p class="copyright">&copy; 2026 Angel & Co Interiors. Based in Miami, Florida. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Angel & Co Interiors. Based in Florida. All rights reserved.</p>
         </div>
     </footer>
 
