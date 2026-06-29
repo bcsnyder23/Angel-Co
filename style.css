@@ -42,24 +42,24 @@ h6 {
 }
 
 h1 {
-  font-size: 5rem;
-  line-height: 1.1;
+  font-size: 3.8rem;
+  line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--color-ivory);
 }
 
 h2 {
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
   margin-bottom: 1.5rem;
   color: #4a4a4a;
@@ -79,14 +79,14 @@ a {
 /* Spacing & Layout */
 .container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 30px;
 }
 
 section {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 /* Buttons */
@@ -418,32 +418,37 @@ h1 span {
   gap: 3rem;
 }
 
+.cards-grid.two-cols {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
 .luxury-card {
   background: #ffffff;
-  padding: 4rem 3rem;
-  border-radius: 4px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  text-align: left;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(5, 16, 34, 0.05);
 }
 
 .luxury-card::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
+  left: 0;
+  width: 40px;
   height: 3px;
   background: var(--color-champagne-gold);
   transition: width 0.4s ease;
 }
 
 .luxury-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
 }
 
 .luxury-card:hover::before {
@@ -451,10 +456,10 @@ h1 span {
 }
 
 .luxury-card h3 {
-  font-size: 1.5rem;
-  letter-spacing: 2px;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 /* Featured Projects */
@@ -605,7 +610,7 @@ h1 span {
 /* Gallery Layout */
 .full-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
@@ -781,7 +786,11 @@ footer {
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 3.2rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
   }
 
   .split-section {
@@ -791,11 +800,40 @@ footer {
 
 @media (max-width: 768px) {
   section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
-  .nav-links,
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-right {
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 105px;
+    left: 0;
+    width: 100%;
+    background: var(--color-primary-navy);
+    padding: 1.5rem 0;
+    text-align: center;
+    gap: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
   .nav-quote-btn {
     display: none;
   }
@@ -804,24 +842,53 @@ footer {
     display: block;
   }
 
+  .hero {
+    background-attachment: scroll;
+    padding-top: 120px;
+  }
+
   .hero-content {
     padding-left: 5%;
     padding-right: 5%;
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.95rem;
   }
 
   .cards-grid,
+  .cards-grid.two-cols,
   .projects-grid,
   .split-section,
   .form-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .quote-form {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
   }
 
   .hero-buttons {
     flex-direction: column;
+    gap: 1rem;
   }
 
   .hero-buttons .btn {
