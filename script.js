@@ -57,4 +57,38 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
     }
+
+    // Before & After Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabButtons.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        });
+    });
+
+    // Before & After Sliders
+    const sliders = document.querySelectorAll('.before-after-slider');
+    sliders.forEach(slider => {
+        const range = slider.querySelector('.slider-range');
+        const after = slider.querySelector('.after');
+        const handle = slider.querySelector('.slider-handle');
+        
+        if (range && after && handle) {
+            range.addEventListener('input', (e) => {
+                const sliderPos = e.target.value;
+                after.style.width = `${sliderPos}%`;
+                handle.style.left = `${sliderPos}%`;
+            });
+        }
+    });
 });
