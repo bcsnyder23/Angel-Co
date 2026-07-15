@@ -13,6 +13,7 @@
   --color-cream:       #FAF7F2;
   --color-white:       #FFFFFF;
   --color-warm-grey:   #A89F95;
+  --color-blue:        #4A6B82; /* Coastal/ slate blue */
   --color-text:        #4A4543;
   --color-text-light:  #7A756F;
 
@@ -195,7 +196,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100px;
+  height: auto;
   z-index: 1000;
   transition: var(--transition);
   background: transparent;
@@ -208,29 +209,75 @@ header.scrolled {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.top-bar {
+  background-color: var(--color-gold);
+  color: var(--color-deep);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 8px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.top-bar-left, .top-bar-right {
+  display: flex;
+  gap: 20px;
+}
+
+.top-bar a {
+  color: var(--color-deep);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.top-bar a:hover {
+  opacity: 0.7;
+}
+
+header.scrolled .top-bar {
+  display: none; /* Hide top bar when scrolled for a cleaner sticky nav */
+}
+
 .nav-container {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto; /* Changed to auto so logo can expand */
   align-items: center;
-  height: 100%;
+  height: 100px;
   padding-left: 60px;
   padding-right: 60px;
   max-width: 100%;
 }
 
 .logo-wrapper {
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  text-decoration: none;
+  gap: 15px;
 }
 
 .logo-a {
-  height: 100%;
-  width: 100%;
+  height: 60px;
+  width: auto;
   object-fit: contain;
   transition: transform 0.4s ease;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-blue);
+  font-weight: 400;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  /* Add a subtle text shadow in case it sits on a dark background */
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
 }
 
 .nav-right {
@@ -356,6 +403,80 @@ header.scrolled {
 
 .hero-cta {
   margin-top: 1rem;
+}
+
+/* ─────────────────────────────────────────────
+   Hero Section — Split Layout
+   ───────────────────────────────────────────── */
+.split-hero {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+  background: linear-gradient(135deg, var(--color-deep) 0%, #151515 100%);
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 120px 8% 80px 12%; 
+  z-index: 3;
+  position: relative;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  height: 120%;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.split-hero-content h1 {
+  color: var(--color-cream);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.split-hero-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 992px) {
+  .split-hero {
+    flex-direction: column;
+  }
+  .split-hero-content {
+    padding: 160px 5% 60px 5%;
+    align-items: center;
+    text-align: center;
+  }
+  .split-hero-image {
+    min-height: 60vh;
+  }
 }
 
 /* ─────────────────────────────────────────────

@@ -23,7 +23,7 @@
     <meta property="og:title" content="Angel & Co Interiors | Luxury Interior Design Studio in Florida">
     <meta property="og:description"
         content="Elegant interiors designed with warmth, balance, and soul. Luxury interior design, home remodeling, and custom furnishing in Florida.">
-    <meta property="og:image" content="https://www.designbyangel.com/Photos/angel%20%26%20co/hero-interior.png">
+    <meta property="og:image" content="https://www.designbyangel.com/Photos/angel%20%26%20co/hero-interior-final.jpg">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Angel & Co Interiors">
 
@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="Angel & Co Interiors | Luxury Interior Design in Florida">
     <meta name="twitter:description"
         content="Elegant interiors designed with warmth, balance, and soul. Luxury interior design, home remodeling, and custom furnishing.">
-    <meta name="twitter:image" content="https://www.designbyangel.com/Photos/angel%20%26%20co/hero-interior.png">
+    <meta name="twitter:image" content="https://www.designbyangel.com/Photos/angel%20%26%20co/hero-interior-final.jpg">
 
     <!-- Structured Data: Local Business + Interior Designer -->
     <script type="application/ld+json">
@@ -97,11 +97,14 @@
     </script>
 
     <!-- Security headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -156,10 +159,24 @@
 
     <!-- Navigation -->
     <header id="header">
+        <!-- Top Contact Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <a href="tel:2392876227"><i class="fas fa-phone"></i> 239.287.6227</a>
+                <a href="mailto:josee@designbyangel.com"><i class="fas fa-envelope"></i> josee@designbyangel.com</a>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-houzz"></i></a>
+            </div>
+        </div>
+
         <div class="nav-container">
             <!-- Navbar Logo -->
             <a href="index.html" class="logo-wrapper">
                 <img src="Photos/angel & co/logo-transparent.png" alt="Angel & Co Monogram" class="logo-a">
+                <span class="logo-text">Angel & Co Interiors</span>
             </a>
 
             <!-- Centered Nav Links -->
@@ -179,17 +196,20 @@
         </div>
     </header>
 
-    <!-- Hero Section — Full-bleed image with centered overlay -->
-    <section class="hero" id="hero">
-        <div class="hero-image-bg">
-            <img src="Photos/angel & co/hero-interior.png"
-                alt="Elegant luxury living room designed by Angel & Co Interiors">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
+    <!-- Hero Section — Split Layout -->
+    <section class="split-hero" id="hero">
+        <div class="split-hero-content reveal">
+            <img src="Photos/angel & co/logo-transparent.png" alt="" class="hero-watermark" aria-hidden="true">
             <div class="hero-overline">Angel & Co Interiors</div>
             <h1>Elegant interiors designed<br>with warmth, balance, and soul.</h1>
+            <p class="hero-subtext"
+                style="color: var(--color-warm-grey); font-family: var(--font-body); font-size: 1.1rem; max-width: 500px; margin-bottom: 2.5rem; line-height: 1.6;">
+                Luxury interior design, custom furnishings, and sophisticated remodeling across Florida.</p>
             <a href="quote.html" class="btn btn-primary hero-cta">Book a Consultation</a>
+        </div>
+        <div class="split-hero-image reveal">
+            <img src="Photos/angel & co/hero-interior-final.jpg"
+                alt="Elegant luxury living room designed by Angel & Co Interiors">
         </div>
     </section>
 
