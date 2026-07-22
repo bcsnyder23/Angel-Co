@@ -13,7 +13,8 @@
   --color-cream:       #FAF7F2;
   --color-white:       #FFFFFF;
   --color-warm-grey:   #A89F95;
-  --color-blue:        #4A6B82; /* Coastal/ slate blue */
+  --color-blue:        #4A6B82; /* Coastal slate blue */
+  --color-blue-cream:  #B8CDD9; /* Creamy powder blue — soft & luxurious */
   --color-text:        #4A4543;
   --color-text-light:  #7A756F;
 
@@ -48,6 +49,234 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ─────────────────────────────────────────────
+   Snap-page: full-screen panel scroll system
+   ───────────────────────────────────────────── */
+body.snap-page {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
+
+/* Every top-level section snaps to full screen */
+body.snap-page > section,
+body.snap-page > .hero-fullpage {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* ─── Snap content panels (About / Contact second screen etc.) ─── */
+.snap-content-panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-ivory);
+  position: relative;
+  padding: 80px 0 80px;
+}
+
+/* Split layout: image left + text right */
+.snap-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 160px);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.snap-split-image {
+  overflow: hidden;
+}
+
+.snap-split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.snap-split-text {
+  padding: 80px 80px 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.snap-split-text h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+  color: var(--color-deep);
+}
+
+.snap-split-text p {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.snap-role {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem !important;
+}
+
+/* ─── Snap gallery panels ─── */
+.snap-gallery-panel {
+  background-color: var(--color-deep);
+  padding: 60px 40px 80px;
+  position: relative;
+}
+
+.snap-gallery-header {
+  margin-bottom: 2rem;
+}
+
+.snap-gallery-header h2 {
+  color: var(--color-cream);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.snap-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 5px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.snap-gallery-item {
+  overflow: hidden;
+}
+
+.snap-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-elegant);
+}
+
+.snap-gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+/* CTA strip at the bottom of the last gallery panel */
+.snap-gallery-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.snap-gallery-cta .hero-footer-copy {
+  color: rgba(250, 247, 242, 0.4);
+}
+
+/* ─── Home contact section (also used on contact page) ─── */
+.home-contact-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-ivory);
+  position: relative;
+}
+
+.home-contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  width: 100%;
+}
+
+.home-contact-info h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--color-deep);
+  margin-bottom: 1rem;
+}
+
+.home-contact-info p {
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.home-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-contact-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-contact-detail-item i {
+  color: var(--color-gold);
+  width: 18px;
+  text-align: center;
+}
+
+a.home-contact-detail-item:hover {
+  color: var(--color-gold);
+}
+
+.home-contact-form h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-deep);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+/* ─── Hero footer light variant (for cream panels) ─── */
+.hero-footer--light {
+  background: linear-gradient(to top, rgba(240, 235, 225, 0.95) 0%, transparent 100%);
+}
+
+.hero-footer--light .hero-footer-links a,
+.hero-footer--light .hero-footer-copy,
+.hero-footer--light .hero-footer-socials a {
+  color: rgba(74, 69, 67, 0.6);
+}
+
+.hero-footer--light .hero-footer-links a:hover,
+.hero-footer--light .hero-footer-socials a:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 900px) {
+  .snap-split {
+    grid-template-columns: 1fr;
+  }
+  .snap-split-image {
+    height: 40vh;
+  }
+  .snap-split-text {
+    padding: 40px 24px;
+  }
+  .snap-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 160px);
+  }
+  .home-contact-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 80px 24px 40px;
+  }
 }
 
 body {
@@ -406,7 +635,278 @@ header.scrolled .top-bar {
 }
 
 /* ─────────────────────────────────────────────
-   Hero Section — Split Layout
+   Hero — Full-bleed one-screen layout
+   ───────────────────────────────────────────── */
+.hero-fullpage {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-fullpage-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Use background-image for smoother browser upscaling */
+  background-image: url('Photos/angel & co/homeheroupdated.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  
+  /* Zoom the background slightly to push baked-in black bars off screen */
+  transform: scale(1.25);
+  transform-origin: center center;
+  /* Smooth upscaling — reduces pixel-block artifacts */
+  image-rendering: auto;
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* Hide the img tag; background-image handles the photo */
+.hero-fullpage-bg img {
+  display: none;
+}
+
+.hero-fullpage-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Creamy-blue tinted gradient for a refined atmosphere */
+  background: linear-gradient(
+    135deg,
+    rgba(18, 30, 42, 0.78) 0%,
+    rgba(45, 68, 85, 0.45) 50%,
+    rgba(184, 205, 217, 0.08) 100%
+  );
+}
+
+.hero-fullpage-content {
+  position: relative;
+  z-index: 3;
+  max-width: 700px;
+  padding: 0 40px;
+  text-align: left;
+  margin-left: 8%;
+  margin-right: auto;
+}
+
+.hero-fullpage-content h1 {
+  color: var(--color-cream);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+/* CTA button + tagline on same row */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(250, 247, 242, 0.65);
+  letter-spacing: 1.5px;
+  font-style: italic;
+}
+
+/* Contact strip at the bottom of hero content */
+.hero-contact-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-contact-item {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(250, 247, 242, 0.75);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.hero-contact-item i {
+  color: var(--color-blue-cream);
+  margin-right: 5px;
+}
+
+a.hero-contact-item:hover {
+  color: var(--color-gold);
+}
+
+.hero-contact-divider {
+  color: rgba(250, 247, 242, 0.3);
+  font-size: 0.75rem;
+}
+
+/* Hero footer bar — pinned to bottom of the full-page section */
+.hero-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 60px;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.65) 0%, transparent 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.hero-footer-links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.hero-footer-links a {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-footer-links a:hover {
+  color: var(--color-gold);
+}
+
+.hero-footer-copy {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: rgba(250, 247, 242, 0.4);
+}
+
+.hero-footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.hero-footer-socials a {
+  color: rgba(250, 247, 242, 0.5);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-footer-socials a:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+  .hero-footer {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .hero-footer-links {
+    gap: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero-fullpage-content {
+    margin-left: auto;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .hero-cta-row {
+    justify-content: center;
+  }
+  .hero-contact-strip {
+    justify-content: center;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Homepage Gallery Preview
+   ───────────────────────────────────────────── */
+.home-gallery-section {
+  padding: 80px 0 100px;
+  background-color: var(--color-ivory);
+}
+
+.home-gallery-section .section-heading {
+  color: var(--color-deep);
+}
+
+.home-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 280px;
+  gap: 6px;
+  margin-top: 3rem;
+  padding: 0 6px;
+}
+
+.home-gallery-item {
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.home-gallery-item.tall {
+  grid-row: span 2;
+}
+
+.home-gallery-item.wide {
+  grid-column: span 2;
+}
+
+.home-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-elegant);
+}
+
+.home-gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0);
+  transition: background 0.4s ease;
+}
+
+.home-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.home-gallery-item:hover::after {
+  background: rgba(26, 26, 26, 0.15);
+}
+
+@media (max-width: 768px) {
+  .home-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+  }
+  .home-gallery-item.wide {
+    grid-column: span 1;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Hero Section — Split Layout (legacy, kept for other use)
    ───────────────────────────────────────────── */
 .split-hero {
   display: flex;
@@ -1365,4 +1865,375 @@ footer {
     padding-top: 70px;
     padding-bottom: 70px;
   }
+}
+/* ---------------------------------------------
+   Single-Screen Gallery
+   --------------------------------------------- */
+body.no-scroll-gallery {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-ivory);
+}
+
+.gallery-wrapper {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 100px 30px 40px; /* space for header */
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.gallery-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+}
+
+.gallery-column-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-deep);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.gallery-item {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: var(--color-cream);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 900px) {
+  body.no-scroll-gallery {
+    overflow-y: auto;
+    height: auto;
+  }
+  .gallery-wrapper {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding-bottom: 80px;
+  }
+  .gallery-item {
+    min-height: 250px;
+  }
+}
+
+/* ---------------------------------------------
+   Gallery 9-Image Grid (Fits perfectly on screen)
+   --------------------------------------------- */
+.gallery-all-in-one {
+  background-color: var(--color-deep);
+  padding: 80px 40px 100px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-all-in-one .snap-gallery-header {
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+}
+
+.gallery-9-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Dynamically size 3 rows to fill remaining height exactly */
+  grid-template-rows: repeat(3, calc((100vh - 280px) / 3));
+  grid-auto-flow: column; /* THIS MAKES IT FILL COLUMNS FIRST! */
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.gallery-9-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.gallery-9-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.gallery-9-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-9-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255,255,255,0.9);
+  padding: 4px 12px;
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  color: var(--color-deep);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .gallery-9-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 150px);
+  }
+}
+
+/* --- Gallery Grid Labels --- */
+.gallery-9-header {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-gold);
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 5px;
+}
+
+/* --- About Me Photo Shrink & Crop --- */
+.about-me-photo-wrapper {
+  width: 400px;
+  height: 450px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  border: 8px solid var(--color-ivory);
+}
+
+.about-me-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Zoom in to push black bars out, but shift down slightly to keep her head */
+  transform: scale(1.25);
+  object-position: center 10%;
+}
+
+.about-me-bg {
+  background-image: url('Photos/angel & co/group1/3e6c401f-32f6-44ea-9750-c14af70dceb6.jpeg'); /* elegant living room */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.about-me-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 12, 10, 0.85); /* dark overlay */
+  z-index: 0;
+}
+.about-me-bg > * {
+  position: relative;
+  z-index: 1;
+}
+.about-me-bg .snap-split-text h2, 
+.about-me-bg .snap-split-text p {
+  color: var(--color-cream);
+}
+
+/* Force footer to be fixed and completely at the bottom */
+.hero-footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  padding-bottom: 8px !important; 
+  padding-top: 15px !important;
+  z-index: 99 !important;
+}
+
+/* ---------------------------------------------
+   Hero Two-Column Overlay (Homepage)
+   --------------------------------------------- */
+.hero-split-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.hero-split-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-split-left h1 {
+  color: var(--color-cream);
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-contact-card {
+  flex: 0 1 450px;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.hero-contact-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-deep);
+  margin-bottom: 20px;
+}
+
+.hero-contact-card .form-group label {
+  color: var(--color-text);
+}
+
+.hero-contact-card .form-group input,
+.hero-contact-card .form-group textarea {
+  background: #fff;
+  border: 1px solid rgba(139, 126, 116, 0.3);
+  color: var(--color-deep);
+}
+
+.hero-contact-card .form-group input:focus,
+.hero-contact-card .form-group textarea:focus {
+  border-color: var(--color-gold);
+}
+
+@media (max-width: 1000px) {
+  .hero-split-layout {
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 80px;
+  }
+  .hero-contact-card {
+    width: 100%;
+    max-width: 500px;
+  }
+  .hero-split-left {
+    text-align: center;
+  }
+  .hero-split-left .hero-contact-strip,
+  .hero-split-left .hero-cta-row {
+    justify-content: center;
+  }
+}
+
+/* Force About Me Photo Wrapper Aspect Ratio */
+.about-me-photo-wrapper {
+  width: 100%;
+  max-width: 400px;
+  height: auto !important;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+}
+.about-me-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02); /* Just a tiny safety zoom */
+  object-position: center center;
+}
+
+/* Hide black bars in the gallery thumbnails */
+.gallery-9-item img {
+  transform: scale(1.35) !important;
+}
+.gallery-9-item:hover img {
+  transform: scale(1.45) !important;
+}
+
+/* Lightbox Wrapper to hide black bars on zoom */
+.lightbox-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-wrapper img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(1.35); /* Zoom to push black bars out of the wrapper */
+  box-shadow: none !important; /* Move shadow to wrapper */
+  border-radius: 0 !important;
 }

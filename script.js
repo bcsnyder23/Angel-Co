@@ -92,3 +92,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Fade out hero footer on scroll
+    const scrollContainer = document.querySelector('body.snap-page') || document.documentElement;
+    const heroFooter = document.querySelector('.hero-footer');
+    
+    if (heroFooter) {
+        // We add a transition in JS to ensure it's applied
+        heroFooter.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+        
+        scrollContainer.addEventListener('scroll', () => {
+            if (scrollContainer.scrollTop > 50) {
+                heroFooter.style.opacity = '0';
+                heroFooter.style.visibility = 'hidden';
+            } else {
+                heroFooter.style.opacity = '1';
+                heroFooter.style.visibility = 'visible';
+            }
+        });
+        
+        // Also listen to window scroll in case body isn't the scroll container on some browsers
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                heroFooter.style.opacity = '0';
+                heroFooter.style.visibility = 'hidden';
+            } else {
+                heroFooter.style.opacity = '1';
+                heroFooter.style.visibility = 'visible';
+            }
+        });
+    }
+});
