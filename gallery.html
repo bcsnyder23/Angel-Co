@@ -24,6 +24,16 @@
 
     <!-- Navigation -->
     <header id="header">
+        <!-- Top Contact Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <a href="tel:2392876227"><i class="fas fa-phone"></i> 239.287.6227</a>
+                <a href="mailto:josee@designbyangel.com"><i class="fas fa-envelope"></i> josee@designbyangel.com</a>
+            </div>
+            <div class="top-bar-right">
+                <span><i class="fas fa-map-marker-alt"></i> Florida, USA</span>
+            </div>
+        </div>
         <div class="nav-container">
             <a href="index.html" class="logo-wrapper">
                 <img src="Photos/angel & co/logo-transparent.png" alt="Angel &amp; Co Monogram" class="logo-a">
@@ -49,7 +59,7 @@
             <div class="hero-overline">Our Portfolio</div>
             <h1>Spaces we&rsquo;ve<br>brought to life.</h1>
             <div class="hero-cta-row" style="justify-content: center;">
-                <span class="hero-tagline">Scroll down to view our latest work.</span>
+                <!-- Removing scroll hint -->
             </div>
         </div>
         <footer class="hero-footer">
@@ -67,83 +77,190 @@
         </footer>
     </section>
 
-    <!-- Panel 2: Complete Gallery (All 9 Photos) -->
-    <section class="snap-content-panel gallery-all-in-one" id="gallery-portfolio">
-        <div class="snap-gallery-header">
-            <h2 style="text-align:center; color: var(--color-cream); font-size: clamp(2rem, 3.5vw, 2.5rem);">Featured Projects</h2>
-            <div class="hero-overline" style="color: var(--color-gold); text-align:center;">Kitchens, Living &amp; Bathrooms</div>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 1400px; margin: 0 auto; width: 100%;">
-            <div class="gallery-9-header">Kitchen</div>
-            <div class="gallery-9-header">Living &amp; Dining</div>
-            <div class="gallery-9-header">Bathrooms</div>
-        </div>
-        
-        <div class="gallery-9-grid">
-            <!-- Kitchen -->
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/Pic 1.jfif" alt="Kitchen 1" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/Pic 2.jfif" alt="Kitchen 2" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 3.jfif" alt="Kitchen 3" loading="lazy">
-            </div>
+    <!-- Panel 2: Gallery Slider -->
+    <section class="gallery-slider-section" id="gallery-portfolio">
 
-            <!-- Living & Dining -->
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 4.jpg" alt="Living 1" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/Pic 5.jfif" alt="Living 2" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 6.jfif" alt="Living 3" loading="lazy">
-            </div>
-
-            <!-- Bathrooms -->
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 10.jfif" alt="Bathroom 1" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 11.jfif" alt="Bathroom 2" loading="lazy">
-            </div>
-            <div class="gallery-9-item" onclick="openLightbox(this)">
-                <img src="Photos/angel & co/group2/pic 12.jfif" alt="Bathroom 3" loading="lazy">
-            </div>
+        <!-- Category Tabs -->
+        <div class="gallery-tabs">
+            <button class="gallery-tab active" data-category="kitchen">Kitchen</button>
+            <button class="gallery-tab" data-category="living">Living &amp; Dining</button>
+            <button class="gallery-tab" data-category="bathrooms">Bathrooms</button>
         </div>
 
-        <div class="snap-gallery-cta">
-            <a href="index.html" class="btn btn-primary" style="background: var(--color-gold); border-color: var(--color-gold); color: #fff;">Start Your Project</a>
+        <!-- Slider Container -->
+        <div class="gallery-slider" id="gallery-slider">
+
+            <!-- Kitchen Slides -->
+            <div class="gallery-slide active" data-category="kitchen" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/Pic 1-Picsart-AiImageEnhancer.jfif" alt="Luxury kitchen design with modern finishes">
+            </div>
+            <div class="gallery-slide" data-category="kitchen" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/Pic 2-Picsart-AiImageEnhancer.jfif" alt="Contemporary kitchen with elegant cabinetry">
+            </div>
+            <div class="gallery-slide" data-category="kitchen" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 3-Picsart-AiImageEnhancer.jfif" alt="Designer kitchen with premium countertops">
+            </div>
+
+            <!-- Living & Dining Slides -->
+            <div class="gallery-slide" data-category="living" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 4-Picsart-AiImageEnhancer.jpg" alt="Elegant living room interior design">
+            </div>
+            <div class="gallery-slide" data-category="living" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/Pic 5.jpg" alt="Sophisticated dining and living space">
+            </div>
+            <div class="gallery-slide" data-category="living" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 6-Picsart-AiImageEnhancer.jfif" alt="Modern living room with luxury furnishing">
+            </div>
+
+            <!-- Bathroom Slides -->
+            <div class="gallery-slide" data-category="bathrooms" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 10-Picsart-AiImageEnhancer.jfif" alt="Luxury bathroom with spa-like design">
+            </div>
+            <div class="gallery-slide" data-category="bathrooms" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 11-Picsart-AiImageEnhancer.jfif" alt="Modern bathroom renovation">
+            </div>
+            <div class="gallery-slide" data-category="bathrooms" onclick="openLightbox(this)">
+                <img src="Photos/angel & co/group2/pic 12-Picsart-AiImageEnhancer.jfif" alt="Elegant master bathroom design">
+            </div>
         </div>
+
+        <!-- Navigation Arrows -->
+        <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous image">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow slider-next" id="slider-next" aria-label="Next image">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Dot Indicators -->
+        <div class="slider-dots" id="slider-dots"></div>
+
+        <!-- Image counter -->
+        <div class="slider-counter" id="slider-counter"></div>
+
+        <!-- Hint -->
+        <div class="slider-hint">Click to fullscreen image</div>
+
     </section>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
         <i class="fas fa-times lightbox-close" onclick="closeLightbox(event)"></i>
-        <div class="lightbox-wrapper">
-            <img id="lightbox-img" src="" alt="Expanded View">
+        <div class="lightbox-crop">
+            <img id="lightbox-img" src="" alt="Full View">
         </div>
     </div>
 
     <script src="script.js"></script>
     <script>
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.src = imgSrc;
-            lightbox.classList.add('active');
+        // ── Lightbox ──
+        function openLightbox(el) {
+            var src = el.querySelector('img').src;
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
         }
-
-        function closeLightbox(event) {
-            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
                 document.getElementById('lightbox').classList.remove('active');
             }
         }
+
+        // ── Tabbed Slider ──
+        (function() {
+            var allSlides = document.querySelectorAll('.gallery-slide');
+            var tabs = document.querySelectorAll('.gallery-tab');
+            var dotsContainer = document.getElementById('slider-dots');
+            var counter = document.getElementById('slider-counter');
+            var currentCategory = 'kitchen';
+            var currentIndex = 0;
+            var categorySlides = [];
+
+            function getSlides(cat) {
+                return Array.from(document.querySelectorAll('.gallery-slide[data-category="' + cat + '"]'));
+            }
+
+            function showSlide(index) {
+                // Hide all slides
+                allSlides.forEach(function(s) { s.classList.remove('active'); });
+
+                categorySlides = getSlides(currentCategory);
+                if (index < 0) index = categorySlides.length - 1;
+                if (index >= categorySlides.length) index = 0;
+                currentIndex = index;
+
+                categorySlides[currentIndex].classList.add('active');
+                updateDots();
+                updateCounter();
+            }
+
+            function updateDots() {
+                dotsContainer.innerHTML = '';
+                categorySlides.forEach(function(_, i) {
+                    var dot = document.createElement('button');
+                    dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+                    dot.addEventListener('click', function() { showSlide(i); });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateCounter() {
+                counter.textContent = (currentIndex + 1) + ' / ' + categorySlides.length;
+            }
+
+            function switchCategory(cat) {
+                currentCategory = cat;
+                currentIndex = 0;
+
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                document.querySelector('.gallery-tab[data-category="' + cat + '"]').classList.add('active');
+
+                showSlide(0);
+            }
+
+            // Tab clicks
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    switchCategory(this.dataset.category);
+                });
+            });
+
+            // Arrow clicks
+            document.getElementById('slider-prev').addEventListener('click', function() {
+                showSlide(currentIndex - 1);
+            });
+            document.getElementById('slider-next').addEventListener('click', function() {
+                showSlide(currentIndex + 1);
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('lightbox').classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+                if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+            });
+
+            // Touch swipe support
+            var slider = document.getElementById('gallery-slider');
+            var touchStartX = 0;
+            slider.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            slider.addEventListener('touchend', function(e) {
+                var diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) showSlide(currentIndex + 1);
+                    else showSlide(currentIndex - 1);
+                }
+            }, { passive: true });
+
+            // Init
+            switchCategory('kitchen');
+        })();
     </script>
 </body>
 </html>
+
+
+
+
