@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Header Scroll Effect
+    // Header & Scroll Indicator Effect
     const header = document.getElementById('header');
+    const scrollIndicators = document.querySelectorAll('.scroll-indicator');
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+    function handleScroll() {
+        const scrollPos = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
+        if (scrollPos > 50) {
+            if (header) header.classList.add('scrolled');
+            scrollIndicators.forEach(indicator => indicator.style.opacity = '0');
         } else {
-            header.classList.remove('scrolled');
+            if (header) header.classList.remove('scrolled');
+            scrollIndicators.forEach(indicator => indicator.style.opacity = '0.9');
         }
-    });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    document.body.addEventListener('scroll', handleScroll, { passive: true });
 
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -47,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run reveal on load and scroll
     window.addEventListener('scroll', reveal);
+    document.body.addEventListener('scroll', reveal, { passive: true });
     reveal(); // Trigger once on load
 
     // Mobile Menu Toggle

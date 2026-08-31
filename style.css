@@ -8,8 +8,8 @@
   --color-deep:        #1A1A1A;
   --color-charcoal:    #2D2D2D;
   --color-warm-dark:   #3A3530;
-  --color-gold:        #C9A96E;
-  --color-gold-soft:   #D4B97A;
+  --color-gold:        #C8A84B;  /* Vibrant warm gold — rich without muddy tones */
+  --color-gold-soft:   #D9BC6A;  /* Lighter gold for hero accents */
   --color-cream:       #FAF7F2;
   --color-white:       #FFFFFF;
   --color-warm-grey:   #A89F95;
@@ -21,8 +21,8 @@
   /* Legacy support for other pages */
   --color-primary-navy:    #1A1A1A;
   --color-secondary-blue:  #2D2D2D;
-  --color-champagne-gold:  #C9A96E;
-  --color-soft-gold:       #D4B97A;
+  --color-champagne-gold:  #C8A84B;
+  --color-soft-gold:       #D9BC6A;
   --color-ivory:           #FAF7F2;
   --color-dark-text:       #4A4543;
 
@@ -58,6 +58,17 @@ body.snap-page {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   height: 100vh;
+}
+
+/* Hide the native scrollbar for all browsers while keeping scroll functionality */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 /* Every top-level section snaps to full screen */
@@ -283,7 +294,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-cream);
   color: var(--color-text);
-  line-height: 1.8;
+  line-height: 1.9;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -320,9 +331,9 @@ h3 {
 p {
   font-size: 1rem;
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   color: var(--color-text-light);
-  line-height: 1.85;
+  line-height: 2.0;
 }
 
 a {
@@ -428,7 +439,11 @@ header {
   height: auto;
   z-index: 1000;
   transition: var(--transition);
-  background: transparent;
+  /* Elegant frosted glass to separate the header from busy/light background images */
+  background: rgba(26, 26, 26, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 header.scrolled {
@@ -439,13 +454,14 @@ header.scrolled {
 }
 
 .top-bar {
-  background-color: var(--color-gold);
-  color: var(--color-deep);
+  background: linear-gradient(90deg, #A8881E 0%, #C8A84B 40%, #D9BC6A 65%, #C8A84B 85%, #A8881E 100%);
+  color: var(--color-cream);
   font-family: var(--font-body);
-  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 1px;
-  padding: 8px 60px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -458,9 +474,13 @@ header.scrolled {
 }
 
 .top-bar a {
-  color: var(--color-deep);
+  color: var(--color-cream);
   text-decoration: none;
   transition: opacity 0.3s ease;
+}
+
+.top-bar span {
+  color: var(--color-cream);
 }
 
 .top-bar a:hover {
@@ -472,18 +492,18 @@ header.scrolled .top-bar {
 }
 
 .nav-container {
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* Changed to auto so logo can expand */
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
   height: 100px;
   padding-left: 60px;
   padding-right: 60px;
   max-width: 100%;
+  gap: 50px; /* Space between logo and links */
 }
 
 .logo-wrapper {
-  width: auto;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -492,25 +512,42 @@ header.scrolled .top-bar {
 }
 
 .logo-a {
-  height: 60px;
+  height: 70px;
   width: auto;
   object-fit: contain;
   transition: transform 0.4s ease;
+  margin-right: -10px; /* Pull text a bit closer to image */
 }
 
-.logo-text {
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-text-main {
   font-family: var(--font-heading);
   font-size: 2.2rem;
-  color: var(--color-blue);
+  color: var(--color-cream);
   font-weight: 400;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  /* Add a subtle text shadow in case it sits on a dark background */
-  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.logo-text-sub {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: var(--color-gold);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-left: 2px;
 }
 
 .nav-right {
-  justify-self: end;
+  position: absolute;
+  right: 60px;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -520,7 +557,7 @@ header.scrolled .top-bar {
   list-style: none;
   display: flex;
   gap: 3rem;
-  justify-content: center;
+  align-items: center;
 }
 
 .nav-links a {
@@ -612,13 +649,14 @@ header.scrolled .top-bar {
 }
 
 .hero-overline {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 5px;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  letter-spacing: 3px;
+  color: var(--color-cream);
+  text-transform: none;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .hero-content h1 {
@@ -645,6 +683,7 @@ header.scrolled .top-bar {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: var(--color-deep);
 }
 
 .hero-fullpage-bg {
@@ -654,13 +693,13 @@ header.scrolled .top-bar {
   /* Use background-image for smoother browser upscaling */
   background-image: url('Photos/angel & co/homeheroupdated.png');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center center;
   background-repeat: no-repeat;
   
-  /* Zoom the background slightly to push baked-in black bars off screen */
-  transform: scale(1.25);
-  transform-origin: center center;
-  /* Smooth upscaling — reduces pixel-block artifacts */
+  /* Full bleed, no floating card effect */
+  overflow: hidden;
+  
+  /* Crisp high-quality rendering */
   image-rendering: auto;
   -webkit-filter: none;
   filter: none;
@@ -675,13 +714,41 @@ header.scrolled .top-bar {
   position: absolute;
   inset: 0;
   z-index: 2;
-  /* Creamy-blue tinted gradient for a refined atmosphere */
   background: linear-gradient(
     135deg,
-    rgba(18, 30, 42, 0.78) 0%,
-    rgba(45, 68, 85, 0.45) 50%,
-    rgba(184, 205, 217, 0.08) 100%
+    rgba(18, 30, 42, 0.45) 0%,
+    rgba(45, 68, 85, 0.22) 50%,
+    rgba(184, 205, 217, 0.04) 100%
   );
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-gold);
+  font-size: 2.5rem; /* Made larger */
+  z-index: 10;
+  animation: bounce 2.5s infinite;
+  opacity: 0.9;
+  pointer-events: none;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7); /* Added shadow for contrast */
+  transition: opacity 0.4s ease; /* Smooth fade out */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-8px) translateX(-50%); /* Smaller bounce */
+  }
+  60% {
+    transform: translateY(-4px) translateX(-50%); /* Smaller bounce */
+  }
 }
 
 .hero-fullpage-content {
@@ -689,9 +756,8 @@ header.scrolled .top-bar {
   z-index: 3;
   max-width: 700px;
   padding: 0 40px;
-  text-align: left;
-  margin-left: 8%;
-  margin-right: auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero-fullpage-content h1 {
@@ -707,6 +773,7 @@ header.scrolled .top-bar {
 .hero-cta-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.8rem;
   flex-wrap: wrap;
   margin-bottom: 2.5rem;
@@ -763,12 +830,11 @@ a.hero-contact-item:hover {
   justify-content: space-between;
   padding: 14px 60px;
   background: linear-gradient(to top, rgba(10, 10, 10, 0.65) 0%, transparent 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
 }
 
 .hero-footer-links {
   display: flex;
+  align-items: center;
   gap: 1.8rem;
 }
 
@@ -791,10 +857,13 @@ a.hero-contact-item:hover {
   font-size: 0.65rem;
   letter-spacing: 1px;
   color: rgba(250, 247, 242, 0.4);
+  margin: 0;
+  line-height: 1;
 }
 
 .hero-footer-socials {
   display: flex;
+  align-items: center;
   gap: 1.2rem;
 }
 
@@ -1861,8 +1930,8 @@ footer {
   }
 
   .hero-overline {
-    letter-spacing: 3px;
-    font-size: 0.6rem;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
   }
 
   .cta-section {
@@ -2083,13 +2152,10 @@ body.no-scroll-gallery {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Zoom in to push black bars out, but shift down slightly to keep her head */
-  transform: scale(1.25);
-  object-position: center 10%;
 }
 
 .about-me-bg {
-  background-image: url('Photos/angel & co/group1/3e6c401f-32f6-44ea-9750-c14af70dceb6.jpeg'); /* elegant living room */
+  background-image: url('Photos/angel & co/group2/Pic 5-clean.jpg'); /* elegant living room (high res) */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -2098,7 +2164,7 @@ body.no-scroll-gallery {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(15, 12, 10, 0.85); /* dark overlay */
+  background: rgba(15, 12, 10, 0.6); /* lighter overlay */
   z-index: 0;
 }
 .about-me-bg > * {
@@ -2114,9 +2180,10 @@ body.no-scroll-gallery {
 .hero-footer {
   position: fixed !important;
   bottom: 0 !important;
-  padding-bottom: 8px !important; 
+  padding-bottom: 15px !important; 
   padding-top: 15px !important;
   z-index: 99 !important;
+  align-items: center !important;
 }
 
 /* ---------------------------------------------
@@ -2357,11 +2424,12 @@ body.no-scroll-gallery {
 .gallery-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
-  /* Crop black bars baked into images */
-  transform: scale(1.08);
+  /* No artificial zoom — show full subject */
+  transform: none;
+  background: var(--color-deep);
 }
 
 /* ── Arrows ── */
